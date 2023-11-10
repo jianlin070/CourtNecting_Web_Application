@@ -1,0 +1,130 @@
+@import "app";
+@import "color";
+
+@mixin court-color($bgColor) {
+  background-color: rgba($bgColor, 0.8);
+  border: 2px solid darken($bgColor, 5);
+  border-radius: 50%;
+}
+
+@mixin badminton-court-size($size) {
+  min-height: $size;
+  min-width: $size;
+  max-height: $size;
+  max-width: $size;
+}
+
+@mixin badminton-court-center($size) {
+  margin-top: -$size / 2;
+  margin-left: -$size / 2;
+}
+
+@mixin badminton-court-hover {
+  &:hover {
+    border: 2px solid $secondary-color;
+  }
+}
+
+$ps-size: 20px;
+.badminton-court-empty {
+  @include court-color(lightGreen);
+  @include badminton-court-size($ps-size);
+  @include badminton-court-center($ps-size);
+  @include badminton-court-hover();
+}
+
+.badminton-court-reserved {
+  @include court-color(orange);
+  @include badminton-court-size($ps-size);
+  @include badminton-court-center($ps-size);
+  @include badminton-court-hover();
+}
+
+.badminton-court-occupied {
+  @include court-color(red);
+  @include badminton-court-size($ps-size);
+  @include badminton-court-center($ps-size);
+  @include badminton-court-hover();
+}
+
+.badminton-court-unoccupied {
+  @include court-color(red);
+  @include badminton-court-size($ps-size);
+  @include badminton-court-center($ps-size);
+  @include badminton-court-hover();
+}
+
+.badminton-court-selected {
+  @include badminton-court-center(30px);
+  @include badminton-court-size(30px);
+  border: 2px solid $secondary-color;
+}
+
+.court-empty-indicator {
+  @include court-color(lightGreen);
+  @include badminton-court-size(15px);
+}
+
+.court-occupied-indicator {
+  @include court-color(red);
+  @include badminton-court-size(15px);
+}
+
+.btn-court {
+  border: 1px solid $secondary-color !important;
+  color: $secondary-color !important;
+
+  &:hover {
+    border: 1px solid darken($secondary-color, 10) !important;
+    background-color: darken($secondary-color, 10) !important;
+    color: white !important;
+  }
+}
+
+.btn-court-long {
+  padding: 10px;
+  height: 60px; 
+}
+
+.btn-court-checked {
+  border: 1px solid darken($secondary-color, 10) !important;
+  background-color: darken($secondary-color, 10) !important;
+  color: white !important;
+
+  &:hover {
+    border: 1px solid darken($secondary-color, 10) !important;
+    background-color: darken($secondary-color, 10) !important;
+    color: white;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.main .smallHeading {
+  font-weight: bold;
+  color: $text-color;
+}
+
+.main {
+  padding-bottom: 10;
+}
+
+.light-indicator {
+  display: inline-block;
+}
+
+.btn-save {
+  @include btn-main;
+  font-size: 0.75rem;
+  margin: 0 !important;
+}
+
